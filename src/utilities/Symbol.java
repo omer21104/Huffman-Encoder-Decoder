@@ -1,5 +1,7 @@
 package utilities;
 
+import java.util.Arrays;
+
 /**
  * class to handle symbols of variable sizes
  * @param bytes holds an array of bytes in desired len
@@ -40,5 +42,34 @@ public class Symbol {
 	public String toString() {
 		return getString();
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(bytes);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Symbol other = (Symbol) obj;
+		if (!Arrays.equals(bytes, other.bytes))
+			return false;
+		return true;
+	}
+	
+//	@Override
+//	public boolean equals(Object o) {
+//		System.out.println("comp");
+//		Symbol s = (Symbol) o;
+//		return Arrays.equals(this.bytes, s.bytes);
+//	}
 	
 }
