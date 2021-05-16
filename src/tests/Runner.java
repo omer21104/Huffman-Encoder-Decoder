@@ -30,75 +30,75 @@ public class Runner implements Converter {
 	
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		// can use hashmaps for dictionary.
-		// scan the text for all 2 byte symbols
-		
-		// freqMap to store frequencies of symbols
-		HashMap<Symbol, Integer> freqMap = new HashMap<>();
-		PriorityQueue<Node> minHeap = new PriorityQueue<>();
-		
-		Reader r = null;
-		try {
-			r = new Reader();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Symbol cur = null;
-		
-		do {
-			cur = r.nextSymbol();
-			
-			if (cur != null) {				
-				freqMap.merge(cur, 1, Integer::sum);
-				//System.out.print(cur.getString());
-			}
-		} while (cur != null);
-		
-		
-		System.out.println();
-		//System.out.println(freqMap);
-		for(Entry<Symbol, Integer> s : freqMap.entrySet()) {
-			minHeap.add(new Node(s.getKey(), s.getValue()));
-		}
-		
-		
-		Node root = null;
-		while (minHeap.size() > 1) {	
-			// poll two lowest frequency nodes from heap
-			Node left = minHeap.poll();
-			Node right = minHeap.poll();
-			Node tmp = new Node();
-			// combine them into a new node and set references
-			tmp = left.combine(right);
-			tmp.setLeftChild(left);
-			tmp.setRightChild(right);
-			
-			// add it to mean heap
-			minHeap.add(tmp);
-
-			
-		}
-		
-		// make dictionary for codes
-		HashMap<Symbol, String> dict = new HashMap<Symbol, String>();
-
-		Node temp = minHeap.peek();
-		createDictionary(temp,"", dict);
-
-		root = temp;
-		// second pass
-		Symbol cur2 = null;
-		
-		r.close();
-		try {
-			r = new Reader();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		// TODO Auto-generated method stub
+//		
+//		// can use hashmaps for dictionary.
+//		// scan the text for all 2 byte symbols
+//		
+//		// freqMap to store frequencies of symbols
+//		HashMap<Symbol, Integer> freqMap = new HashMap<>();
+//		PriorityQueue<Node> minHeap = new PriorityQueue<>();
+//		
+//		Reader r = null;
+//		try {
+//			r = new Reader();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		Symbol cur = null;
+//		
+//		do {
+//			cur = r.nextSymbol();
+//			
+//			if (cur != null) {				
+//				freqMap.merge(cur, 1, Integer::sum);
+//				//System.out.print(cur.getString());
+//			}
+//		} while (cur != null);
+//		
+//		
+//		System.out.println();
+//		//System.out.println(freqMap);
+//		for(Entry<Symbol, Integer> s : freqMap.entrySet()) {
+//			minHeap.add(new Node(s.getKey(), s.getValue()));
+//		}
+//		
+//		
+//		Node root = null;
+//		while (minHeap.size() > 1) {	
+//			// poll two lowest frequency nodes from heap
+//			Node left = minHeap.poll();
+//			Node right = minHeap.poll();
+//			Node tmp = new Node();
+//			// combine them into a new node and set references
+//			tmp = left.combine(right);
+//			tmp.setLeftChild(left);
+//			tmp.setRightChild(right);
+//			
+//			// add it to mean heap
+//			minHeap.add(tmp);
+//
+//			
+//		}
+//		
+//		// make dictionary for codes
+//		HashMap<Symbol, String> dict = new HashMap<Symbol, String>();
+//
+//		Node temp = minHeap.peek();
+//		createDictionary(temp,"", dict);
+//
+//		root = temp;
+//		// second pass
+//		Symbol cur2 = null;
+//		
+//		r.close();
+//		try {
+//			r = new Reader();
+//		} catch (FileNotFoundException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		// write tree encode before chunk here
 		
@@ -159,41 +159,41 @@ public class Runner implements Converter {
 //			}
 //		} while (cur2 != null);
 		
-		/**
-		 * Testing new method of writing
-		 * 
-		 * 
-		 */
-		byte[] toWrite = getByteArray(r,dict);
-		try {
-			r.write(toWrite);
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		//System.out.println(codeBuf);
-
-		r.close();
-		try {
-			r = new Reader("out.txt");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		byte[] arr = null;
-		try {
-			arr = r.readAllBytes();
-			//System.out.print(arr.length);
-			System.out.println();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		StringBuffer sb = new StringBuffer();
-		for (int i = 0; i < arr.length; i++) {
-			sb.append(Converter.byteToString(arr[i]));
-		}
+//		/**
+//		 * Testing new method of writing
+//		 * 
+//		 * 
+//		 */
+//		byte[] toWrite = getByteArray(r,dict);
+//		try {
+//			r.write(toWrite);
+//		} catch (IOException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		//System.out.println(codeBuf);
+//
+//		r.close();
+//		try {
+//			r = new Reader("out.txt");
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		byte[] arr = null;
+//		try {
+//			arr = r.readAllBytes();
+//			//System.out.print(arr.length);
+//			System.out.println();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		StringBuffer sb = new StringBuffer();
+//		for (int i = 0; i < arr.length; i++) {
+//			sb.append(Converter.byteToString(arr[i]));
+//		}
 		
 		//ByteBuffer bf = ByteBuffer.allocate(sb.length()/8);
 		//decode(sb, root);
@@ -299,6 +299,92 @@ public class Runner implements Converter {
 		// handle last element
 		arr[arr.length - 1] = Converter.stringToByte(sb.substring((arr.length-1) * 8));
 		return arr;
+	}
+	
+	public static void newDecodeTest(Reader r, Node root, boolean[] bytesArr) {
+		final int BYTE_SIZE = 8;
+		
+		// first setup
+		byte[] firstBytes = null;
+		
+		try {
+			firstBytes = r.readNBytes(2);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		Converter.byteToBoolean(bytesArr, 0, firstBytes[0]);
+		Converter.byteToBoolean(bytesArr, BYTE_SIZE, firstBytes[1]);
+		
+		int nextByte = 0;
+		int i = 0;
+		Node temp = null;
+		
+		while(nextByte != -1) {
+			// EOF
+		
+			
+			// decode a symbol
+			temp = root;
+			while(!temp.isLeaf()) {
+				if (bytesArr[i]) // 1
+					temp = temp.getRight();
+				else
+					temp = temp.getLeft();
+				
+				i = (i + 1) % bytesArr.length;
+				if (i % BYTE_SIZE == 0) {
+					// read next byte and store in bytesArr
+					try {
+						nextByte = r.read();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					if (nextByte != -1)
+						Converter.byteToBoolean(bytesArr, Math.abs(i - BYTE_SIZE), nextByte);
+				}
+				
+				if (nextByte == -1 && i == 0)
+					break;
+			}
+			Symbol s = temp.getSymbol();
+			
+			try {
+				if (s != null)
+					r.write(s.getBytes());
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			
+			
+			
+			
+		}
+		
+		// ignore this
+		// edge case, reached EOF, some bits have not been decoded in bytesArr
+		// up to i all bits are decoded
+		
+	}
+	
+	public static Symbol decode(boolean arr[], Node root, int i) {
+		final int BYTE_SIZE = 8;
+		Node temp = root;
+		while(!temp.isLeaf()) {
+			if (arr[i]) // 1
+				temp = temp.getRight();
+			else
+				temp = temp.getLeft();
+			
+			i = (i + 1) % arr.length;
+			if (i % BYTE_SIZE == 0) {
+				// 
+			}
+			
+		}
+		return temp.getSymbol();
 	}
 	
 	

@@ -20,6 +20,19 @@ public class Node implements Comparable<Node>{
 		right = null;
 	}
 	
+	public Node(Symbol symbol) {
+		this.symbol = symbol;
+		freq = 0;
+		left = null;
+		right = null;
+	}
+	
+	public Node(Symbol symbol, Node left, Node right) {
+		this.symbol = symbol;
+		freq = 0;
+		this.left = left;
+		this.right = right;
+	}
 	
 	public Node combine(Node n) {
 		return new Node(null, this.freq + n.freq);
@@ -48,9 +61,9 @@ public class Node implements Comparable<Node>{
 
 	@Override
 	public int compareTo(Node o) {
-		/**
-		 * Compare two nodes based on frequency
-		 */
+	/*
+	 * Compare two nodes based on frequency
+	 */
 		if (this.freq > o.freq)
 			return 1;
 		else if (this.freq == o.freq)

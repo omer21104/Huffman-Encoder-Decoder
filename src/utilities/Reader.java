@@ -74,6 +74,10 @@ public class Reader {
 		output.write(bytes);
 	}
 	
+	public void write(byte bytes) throws IOException {
+		output.write(bytes);
+	}
+	
 	public void open(String fileName) throws IOException {
 		input.close();
 		input = new FileInputStream(new File(FILE_DIR_PATH + fileName));
@@ -81,6 +85,14 @@ public class Reader {
 	
 	public byte[] readAllBytes() throws IOException {
 		return input.readAllBytes();
+	}
+	
+	public byte[] readNBytes(int len) throws IOException {
+		return input.readNBytes(len);
+	}
+	
+	public int read() throws IOException {
+		return input.read();
 	}
 	
 	public void setOutput(String fileName) throws FileNotFoundException {

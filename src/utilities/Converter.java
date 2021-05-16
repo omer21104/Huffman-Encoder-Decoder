@@ -62,13 +62,23 @@ public interface Converter {
 		
 	}
 	
-	public static String toBits(final byte val) {
-		final StringBuilder result = new StringBuilder();
-	 
-		for (int i=0; i<8; i++) {
-			result.append((int)(val >> (8-(i+1)) & 0x0001));
+	public static String bytesToString(byte[] bytes) {
+		String out = "";
+		for (int i = 0; i < bytes.length; i++) {
+			out += byteToString(bytes[i]);
 		}
-		
-		return result.toString();
-	}	
+		return out;
+	}
+	
+	public static void byteToBoolean(boolean[] arr, int i, int b) {
+		final int BYTE_SIZE = 8;
+		//int n = b & 0xFF; // convert to positive
+		for (int j = 0; j < BYTE_SIZE; j++) {
+			if(b % 2 == 1)
+				arr[i+j] = true;
+			else
+				arr[i+j] = false;
+			b /= 2;
+		}
+	}
 }

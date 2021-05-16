@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 /**
  * class to handle symbols of variable sizes
+ * @param len number of bytes in a symbol 
  * @param bytes holds an array of bytes in desired len
  * 
  */
@@ -17,11 +18,13 @@ public class Symbol {
 		bytes = new byte[len];
 	}
 	
-	public void setBytes(byte arr[]) throws IllegalArgumentException {
-		// handle mismatching size
-		if (arr.length > len)
-			throw new IllegalArgumentException();
-		
+	public Symbol(byte arr[]) {
+		bytes = new byte[arr.length];
+		len = arr.length;
+		setBytes(arr);
+	}
+	
+	public void setBytes(byte arr[]) {	
 		for (int i = 0; i < len; i++) {
 			bytes[i] = arr[i];
 		}

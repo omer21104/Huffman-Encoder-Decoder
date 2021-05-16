@@ -3,6 +3,7 @@ package tests;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
@@ -13,170 +14,108 @@ import java.util.Scanner;
 import assign1.HuffmanEncoderDecoder;
 import utilities.ByteArrayList;
 import utilities.Converter;
+import utilities.Node;
 import utilities.Reader;
 import utilities.Symbol;
 
 public class Test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-//		HashMap<Symbol, Integer> freqMap = new HashMap<>();
+
+//		HuffmanEncoderDecoder C = new HuffmanEncoderDecoder();
+//		String in_name[] = {"Romeo and Juliet  Entire Play.txt"};
+//		String out_name[] = {"outTest8.zzz"};
+//		String decomp_name[] = {"outDecomp8.txt"};
+//		C.Compress(in_name, out_name);
+//		C.Decompress(out_name, decomp_name);
+
+		
+//		byte[] b1 = {3,4};
+//		byte[] b2 = {30,40};
+//		byte[] b3 = {31,41};
+//		byte[] b4 = {32,43};
+//		byte[] b5 = {34,45};
+//		
 //		Symbol s1 = new Symbol(2);
-//		Symbol s2 = new Symbol(2);
-//		
-//		byte b1[] = {82,83};
-//		byte b2[] = {82,83};
-//		
 //		s1.setBytes(b1);
+//		Symbol s2 = new Symbol(2);
 //		s2.setBytes(b2);
+//		Symbol s3 = new Symbol(2);
+//		s3.setBytes(b3);
+//		Symbol s4 = new Symbol(2);
+//		s4.setBytes(b4);
+//		Symbol s5 = new Symbol(2);
+//		s5.setBytes(b5);
 //		
-////		freqMap.put(s1,1);
-////
-////		if (freqMap.containsKey(s1)) {			
-////			freqMap.put(s1, freqMap.get(s1) + 1);
-////			freqMap.put(s1, freqMap.get(s1) + 1);
-////		}
-////		
-////		System.out.println(s1.hashCode());
-////		System.out.println(s2.hashCode());
+//		Node n1 = new Node(s1);
+//		Node n2 = new Node(s2);
+//		Node n3 = new Node(s3);
+//		Node n4 = new Node(s4);
+//		Node n5 = new Node(s5);
 //		
-//		//freqMap.put(s2, freqMap.get(s2) + 1);
-////		freqMap.put(s1, 1);
-////		
-////		//System.out.println(s1);
-//		freqMap.merge(s1, 1, Integer::sum);
-//		freqMap.merge(s2, 1, Integer::sum);
-//		freqMap.merge(s1, 1, Integer::sum);
-//		freqMap.merge(s2, 1, Integer::sum);
-////		
-//		System.out.println(freqMap);
+//		Node n6 = n1.combine(n2);
+//		n6.setLeft(n1);
+//		n6.setRight(n2);
+//		
+//		Node n7 = n6.combine(n3);
+//		n7.setLeft(n6);
+//		n7.setRight(n3);
+//		
+//		Node n8 = n4.combine(n5);
+//		n8.setLeft(n4);
+//		n8.setRight(n5);
+//		
+//		Node n9 = n8.combine(n7);
+//		n9.setLeft(n7);
+//		n9.setRight(n8);
+//		
+//		StringBuilder sbuf = new StringBuilder();
+//		Tree.encodeHuffmanTree(n9, sbuf);
+//		System.out.println(sbuf);
+		
+//		System.out.println(Byte.toString((byte)145));
+//		System.out.println(Integer.toBinaryString(-111));
+//		System.out.println(Converter.byteToString((byte)145));
 	
-		//System.out.println(Integer.toBinaryString(34));
-//		Reader r = null;
-//		try {
-//			r = new Reader();
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		
-//		byte[] b = {22,45,82};
-//		
-//		try {
-//			r.write(b);
-//			
-//		} catch (IOException e) {}
-	
-//		String test = "Hellomate";
-//		System.out.println(test.substring(0, 3));
-//		System.out.println(test.substring(3));
-	
-//		String s = "0000000100000011000001110000111100011111000111110000000000000010";
-//		byte[] arr = StringToBytes(s);
-//		for(byte b : arr)
-//			System.out.println(b);
+//		FileOutputStream out = null;
 //		FileInputStream in = null;
+//
 //		try {
-//			in = new FileInputStream(new File(System.getProperty("user.dir") + "\\outputs\\out.txt"));
-//		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//		byte[] arr = null;
-//			try {
-//				arr = in.readAllBytes();
-//				System.out.print(arr.length);
-//				System.out.println();
-//			} catch (IOException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-////			Scanner input = new Scanner(System.in);
-////			input.next();
-//			
-//			BitSet s = new BitSet(arr.length);
-//			s = BitSet.valueOf(arr);
-//			for (int i = 0; i < 8*100; i++) {
-//				System.out.print(s.get(i));
-//				if (i % 7 == 0)
-//					System.out.print(",");
-//			}
-		
-		
-		//System.out.println(0xFF & 117);
-		//System.out.printf(String.format("%8s" , Integer.toBinaryString(117)).replace(' ', '0'));
-	
-		
-//		System.out.println(Converter.byteToString((byte) 117));
-//		StringBuffer sb = new StringBuffer();
-
-//		byte b = -105;
-//		System.out.println(Integer.toBinaryString(b));
-//		System.out.println(Converter.toBits(b));
-	
-//		String arr[];
-//		arr = (new File(System.getProperty("user.dir") + "\\ExampleInputs\\")).list();
-//		for (String name : arr)
-//			System.out.println(name);
-		
-//		Reader r = null;
-//		try {
-//			r = new Reader(Reader.INPUT_NAMES[5]);
+//			out = new FileOutputStream("test.txt");
 //		} catch (FileNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		
-//		Symbol cur = r.nextSymbol();
-//	
-//		while (cur != null) {
-//			System.out.print(cur);
-//			cur = r.nextSymbol();
+//		try {
+//			out.write((byte)145);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
 //		}
 //		
-//		r.close();
-//		System.out.println();
 //		try {
-//			r = new Reader(Reader.INPUT_NAMES[5]);
+//			in = new FileInputStream("test.txt");
 //		} catch (FileNotFoundException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		
-//		Symbol cur2 = r.nextSymbol();
-//	
-//		while (cur2 != null) {
-//			System.out.print(cur2);
-//			cur2 = r.nextSymbol();
+//		try {
+//			//byte[] bytes = in.readAllBytes();
+//			System.out.println(in.read());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
 //		}
-//		
-		HuffmanEncoderDecoder C = new HuffmanEncoderDecoder();
-		String in_name[] = {"hats.bmp"};
-		String out_name[] = {"outTest5.zzz"};
-		String decomp_name[] = {"outDecomp5.bmp"};
-		C.Compress(in_name, out_name);
-		C.Decompress(out_name, decomp_name);
-
 		
-//		ByteArrayList list = new ByteArrayList();
-//		ArrayList<Byte> list2 = new ArrayList<Byte>();
-//		byte[] sss = {(byte)2,(byte)3,(byte)4};
-//	
+//		boolean[] test = new boolean[16];
+//		Converter.byteToBoolean(test, 0, (byte)145);
+//		Converter.byteToBoolean(test, 8, (byte)255);
 //		
-//		list.addBytes(sss);
-//		
-//		
-////		for (int i = 0; i < sss.length; i++) {
-////			list2.add(sss[i]);
-////		}
-//		
-//		System.out.println(list.size());
-//		//System.out.println(list2.size());
-//		
-//		byte[] out = new byte[list.size()];
-//		out = list.toArray();
-//		
-		
+//		for (boolean b : test) {
+//			System.out.print((b ? 1 : 0));
+//		}
 	}
 	
 	public static byte[] StringToBytes(String s) {
