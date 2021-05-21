@@ -1,4 +1,4 @@
-package utilities;
+package tests;
 
 /**
  * Wrapper class for a byte array list

@@ -1,3 +1,10 @@
+/**
+ * Assignment 1
+ * Submitted by: 
+ * Student 1. 	ID# 315740118
+ * Student 2. 	ID# 311263842
+ */
+
 package assign1;
 
 import java.io.FileInputStream;
@@ -10,21 +17,7 @@ import java.util.PriorityQueue;
 import java.util.Map.Entry;
 
 import BinaryIO.*;
-
-/**
- * Assignment 1
- * Submitted by: 
- * Student 1. 	ID# XXXXXXXXX
- * Student 2. 	ID# XXXXXXXXX
- */
-
-// Uncomment if you wish to use FileOutputStream and FileInputStream for file access.
-//import java.io.FileOutputStream;
-//import java.io.FileInputStream;
-
 import base.Compressor;
-import tests.Runner;
-import utilities.Converter;
 import utilities.Node;
 import utilities.Symbol;
 import utilities.Tree;
@@ -81,8 +74,9 @@ public class HuffmanEncoderDecoder implements Compressor
 			for (int i = 0; i < symbolLen; i++) {
 				try {
 					curArr[i] = in.readByte();
-					//System.out.print((char)curArr[i]);
+					
 				} catch(NoSuchElementException e) {
+					
 					// reached eof
 					// copy bytes in to a new array with accurate size
 					// i bytes were read successfully
@@ -96,7 +90,6 @@ public class HuffmanEncoderDecoder implements Compressor
 			// read bytes successfully, make symbol
 			cur = new Symbol(curArr);
 
-			
 			// use merge here to handle counting entries. see explanation in docs
 			freqMap.merge(cur, 1, Integer::sum);
 		}
@@ -117,14 +110,13 @@ public class HuffmanEncoderDecoder implements Compressor
 			
 			// combine them into a new node and set references
 			tmp = left.combine(right);
-			tmp.setLeftChild(left);
-			tmp.setRightChild(right);
+			tmp.setLeft(left);
+			tmp.setRight(right);
 			
 			// add it to mean heap
 			minHeap.add(tmp);
 		}
-		
-		
+
 		// save root of the tree
 		Node root = minHeap.peek();
 		
@@ -138,7 +130,7 @@ public class HuffmanEncoderDecoder implements Compressor
 		Tree.writeTree(root);
 		
 		// second pass
-		// re-open file
+		// re-open file and close previous stream
 		try {
 			inStream.close();
 			inStream = new FileInputStream(input_names[0]);
@@ -177,15 +169,14 @@ public class HuffmanEncoderDecoder implements Compressor
 			// get the encoding
 			String curSymbolCode = dict.get(cur);
 			
+			// write out bits
 			for (int i = 0; i < curSymbolCode.length(); i++) {
 				if (curSymbolCode.charAt(i) == '1')
 					out.write(true);
 				else
 					out.write(false);
 				
-			}
-			
-			
+			}	
 		}
 		
 		// close resources
@@ -203,7 +194,7 @@ public class HuffmanEncoderDecoder implements Compressor
 			e.printStackTrace();
 		}
 		
-		System.out.println("Finished encoding");
+		System.out.println("Finished encoding v1");
 
 	}
 

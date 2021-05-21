@@ -1,4 +1,16 @@
+/**
+ * Assignment 1
+ * Submitted by: 
+ * Student 1. 	ID# 315740118
+ * Student 2. 	ID# 311263842
+ */
+
 package utilities;
+
+/**
+ * Class to handle nodes of huffman tree
+ * 
+ */
 
 public class Node implements Comparable<Node>{
 	private Symbol symbol;
@@ -34,30 +46,31 @@ public class Node implements Comparable<Node>{
 		this.right = right;
 	}
 	
+	/**
+	 * combine two nodes, summing their frequencies {@code freq}
+	 * @param n : the node to be combined with {@code this} node
+	 * @return a new {@code Node} with {@code symbol = null} and the sum
+	 * of the two nodes frequencies
+	 */
 	public Node combine(Node n) {
 		return new Node(null, this.freq + n.freq);
 	}
-
 
 	public Symbol getSymbol() {
 		return symbol;
 	}
 
-
 	public void setSymbol(Symbol symbol) {
 		this.symbol = symbol;
 	}
-
 
 	public long getFreq() {
 		return freq;
 	}
 
-
 	public void setFreq(int freq) {
 		this.freq = freq;
 	}
-
 
 	@Override
 	public int compareTo(Node o) {
@@ -76,32 +89,20 @@ public class Node implements Comparable<Node>{
 		return left;
 	}
 
-
 	public void setLeft(Node left) {
 		this.left = left;
 	}
-
 
 	public Node getRight() {
 		return right;
 	}
 
-
 	public void setRight(Node right) {
 		this.right = right;
 	}
 
-
 	public String toString() {
 		return String.format("{%s ; %d}", symbol, freq);
-	}
-	
-	public void setLeftChild(Node n) {
-		left = n;
-	}
-	
-	public void setRightChild(Node n) {
-		right = n;
 	}
 	
 	public boolean isLeaf() {

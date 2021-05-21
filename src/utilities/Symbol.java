@@ -1,11 +1,16 @@
+/**
+ * Assignment 1
+ * Submitted by: 
+ * Student 1. 	ID# 315740118
+ * Student 2. 	ID# 311263842
+ */
+
 package utilities;
 
 import java.util.Arrays;
 
 /**
  * class to handle symbols of variable sizes
- * @param len number of bytes in a symbol 
- * @param bytes holds an array of bytes in desired len
  * 
  */
 
@@ -22,6 +27,13 @@ public class Symbol {
 		bytes = new byte[arr.length];
 		len = arr.length;
 		setBytes(arr);
+	}
+	
+	public Symbol(byte b) {
+		// single byte symbol
+		len = 1;
+		bytes = new byte[1];
+		bytes[0] = b;
 	}
 	
 	public void setBytes(byte arr[]) {	
@@ -46,6 +58,8 @@ public class Symbol {
 		return getString();
 	}
 
+	
+	// Eclipse generated hashCode() and equals() for comparing symbols
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,12 +81,5 @@ public class Symbol {
 			return false;
 		return true;
 	}
-	
-//	@Override
-//	public boolean equals(Object o) {
-//		System.out.println("comp");
-//		Symbol s = (Symbol) o;
-//		return Arrays.equals(this.bytes, s.bytes);
-//	}
 	
 }

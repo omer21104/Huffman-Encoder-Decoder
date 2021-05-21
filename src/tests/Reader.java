@@ -1,4 +1,4 @@
-package utilities;
+package tests;
 
 /**
  * This class handles reading and writing bytes to file with input/outputStream
@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import tests.Runner;
+import utilities.Symbol;
 
 public class Reader {
 	

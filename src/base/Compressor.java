@@ -1,3 +1,10 @@
+/**
+ * Assignment 1
+ * Submitted by: 
+ * Student 1. 	ID# 315740118
+ * Student 2. 	ID# 311263842
+ */
+
 package base;
 
 public interface Compressor
